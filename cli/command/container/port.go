@@ -29,7 +29,7 @@ func NewPortCommand(dockerCli command.Cli) *cobra.Command {
 		Args:  cli.RequiresRangeArgs(1, 2),
 		RunE: func(cmd *cobra.Command, args []string) error {
 			opts.container = args[0]
-			if len(args) > 1 {
+			if len(args) > 1 && len(args[1]) != 0 {
 				opts.port = args[1]
 			}
 			return runPort(dockerCli, &opts)
